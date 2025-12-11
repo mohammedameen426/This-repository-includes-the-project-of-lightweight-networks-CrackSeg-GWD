@@ -1,0 +1,81 @@
+# Group Normalization
+class GroupNormalization(layers.Layer):
+    def __init__(self, groups=32, axis=-1, epsilon=1e-5, **kwargs):
+        super().__init__(**kwargs)
+        self.groups = groups
+        self.axis = axis
+        self.epsilon = epsilon
+
+    def build(self, input_shape):
+        dim = input_shape[self.axis]
+        if dim is None:
+            raise ValueError("Axis dimension must be defined.")
+        if dim % self.groups != 0:
+            raise ValueError(f"{dim} channels not divisible by {self.groups} groups.")
+        self.gamma = self.add_weight(shape=(dim,), initializer="ones", name="gamma")
+        self.beta = self.add_weight(shape=(dim,), initializer="zeros", name="beta")
+        super().build(input_shape)
+
+    def call(self, inputs):
+        N, H, W, C = tf.shape(inputs)[0], tf.shape(inputs)[1], tf.shape(inputs)[2], tf.shape(inputs)[3]
+        G = self.groups
+        x = tf.reshape(inputs, [N, H, W, G, C // G])
+        mean, var = tf.nn.moments(x, [1,2,4], keepdims=True)
+        x = (x - mean) / tf.sqrt(var + self.epsilon)
+        x = tf.reshape(x, [N, H, W, C])
+        return x * self.gamma + self.beta
+
+# Weight-Standardized Conv2D
+class WSConv2D(layers.Conv2D):
+    def __init__(self, *args, epsilon=1e-5, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.epsilon = epsilon
+
+    def call(self, inputs):
+        kernel = self.kernel
+        mean, var = tf.nn.moments(kernel, axes=[0,1,2], keepdims=True)
+        kernel_std = (kernel - mean) / tf.sqrt(var + self.epsilon)
+        outputs = tf.nn.conv2d(
+            inputs,
+            kernel_std,
+            strides=[1, *self.strides, 1],
+            padding=self.padding.upper()
+        )
+        if self.use_bias:
+            outputs = tf.nn.bias_add(outputs, self.bias)
+        if self.activation is not None:
+            return self.activation(outputs)
+        return outputs
+
+# DropBlock2D
+class DropBlock2D(layers.Layer):
+    def __init__(self, block_size=7, keep_prob=0.9, **kwargs):
+        super().__init__(**kwargs)
+        self.block_size = block_size
+        self.keep_prob = keep_prob
+
+    def build(self, input_shape):
+        h, w = input_shape[1], input_shape[2]
+        if h < self.block_size or w < self.block_size:
+            raise ValueError("Input spatial dimensions must be >= block_size.")
+        super().build(input_shape)
+
+    def call(self, inputs, training=None):
+        if not training:
+            return inputs
+        gamma = ((1 - self.keep_prob) / (self.block_size ** 2)) * (
+            tf.cast(tf.shape(inputs)[1] * tf.shape(inputs)[2], tf.float32) /
+            tf.cast((tf.shape(inputs)[1] - self.block_size + 1) *
+                    (tf.shape(inputs)[2] - self.block_size + 1), tf.float32)
+        )
+        mask = tf.cast(tf.random.uniform(tf.shape(inputs)) < gamma, tf.float32)
+        mask = tf.nn.max_pool2d(
+            mask,
+            ksize=self.block_size,
+            strides=1,
+            padding='SAME'
+        )
+        mask = 1 - mask
+        # scale mask to maintain activation magnitude
+        scale = tf.cast(tf.size(mask), tf.float32) / tf.reduce_sum(mask)
+        return inputs * mask * scale
