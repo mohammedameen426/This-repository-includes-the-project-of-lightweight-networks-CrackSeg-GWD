@@ -11,6 +11,7 @@ Tested on five public datasets—SteelCrack, YCD, Crack500, DeepCrack, and Ozgen
 
 Datasets used on this study:
 1. The SteelCrack dataset is a widely used benchmark for steel crack detection and segmentation. The dataset is divided into 3,300 training images, 525 validation images, and 530 test images, offering a well-balanced split for deep learning–based segmentation studies. "Z. He, W. Chen, J. Zhang, Y.H. Wang, Crack segmentation on steel structures using boundary guidance model, Autom Constr 162 (2024). https://doi.org/10.1016/j.autcon.2024.105354."
+
 SteelCrack dataset :https://github.com/hzlbbfrog/Civil-dataset. 
 
 2. The YCD dataset contains images of two main types of surface defects: road cracks and concrete wall cracks. The dataset includes 776 images, split into 622 for training and 154 for testing. All images were resized to 512 × 512, matching the preprocessing used for other datasets such as DeepCrack537. Figure 7 shows sample images that reflect the dataset’s diversity in crack types and scales. "X. Yang, H. Li, Y. Yu, X. Luo, T. Huang, X. Yang, Automatic Pixel-Level Crack Detection and Measurement Using Fully Convolutional Network, Computer-Aided Civil and Infrastructure Engineering 33 (2018). https://doi.org/10.1111/mice.12412."
@@ -26,9 +27,9 @@ Ozgenel dataset:https://data.mendeley.com/datasets/jwsn7tfbrp/1
 DeepCrack dataset:https://github.com/yhlleo/DeepCrack
 
 5. Crack500 dataset consists of 1896 training images and 1124 testing images, all at a resolution of 640 × 360 pixels. Notably, Crack500 offers a diverse range of crack shapes and widths, presenting significant challenges for crack segmentation tasks. "F. Yang, L. Zhang, S. Yu, D. Prokhorov, X. Mei, H. Ling, Feature Pyramid and Hierarchical Boosting Network for Pavement Crack Detection, IEEE Transactions on Intelligent Transportation Systems 21 (2020). https://doi.org/10.1109/TITS.2019.2910595"
-   
+
 Crack500 dataset: https://github.com/fyangneil/pavement-crack-detection
 
 6. Crack Dataset: This dataset contains 128 high-resolution crack images (3024 × 3024) collected from sections of Qingyuan Road, split into 102 for training and 26 for testing. The images include real-world challenges such as strong shadows, uneven lighting, surface noise, and complex textures.These samples are used to test and evaluate the robustness of our model.
-7. 
+
 Our dataset: https://drive.google.com/file/d/1HHUAAsJBGeT0KJ_C4NkNEAw3XMQOWd0s/view?usp=drive_link
