@@ -2,6 +2,7 @@
 CrackSeg-GWD: Automatic lightweight networks for Multi-Material Bridge Crack Segmentation
 Datasets used on this study:
 
+Datasets used on this study:
 1. The SteelCrack dataset is a widely used benchmark for steel crack detection and segmentation. The dataset is divided into 3,300 training images, 525 validation images, and 530 test images, offering a well-balanced split for deep learning–based segmentation studies. "Z. He, W. Chen, J. Zhang, Y.H. Wang, Crack segmentation on steel structures using boundary guidance model, Autom Constr 162 (2024). https://doi.org/10.1016/j.autcon.2024.105354."
 SteelCrack dataset :https://github.com/hzlbbfrog/Civil-dataset. 
 
@@ -16,3 +17,4 @@ DeepCrack dataset:https://github.com/yhlleo/DeepCrack
 
 5.Crack500 dataset consists of 1896 training images and 1124 testing images, all at a resolution of 640 × 360 pixels. Notably, Crack500 offers a diverse range of crack shapes and widths, presenting significant challenges for crack segmentation tasks. "F. Yang, L. Zhang, S. Yu, D. Prokhorov, X. Mei, H. Ling, Feature Pyramid and Hierarchical Boosting Network for Pavement Crack Detection, IEEE Transactions on Intelligent Transportation Systems 21 (2020). https://doi.org/10.1109/TITS.2019.2910595"
 Crack500 dataset: https://github.com/fyangneil/pavement-crack-detection
+6. 
