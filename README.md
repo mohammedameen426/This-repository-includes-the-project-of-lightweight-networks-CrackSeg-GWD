@@ -1,4 +1,4 @@
-# This-repository-includes-the-project-of-lightweight-networks-CrackSeg-GWD
+# Lightweight-CrackSeg-GWD
 CrackSeg-GWD: Automatic lightweight networks for Multi-Material Bridge Crack Segmentation
 
 Overview
