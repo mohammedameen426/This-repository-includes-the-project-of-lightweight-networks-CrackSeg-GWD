@@ -2,6 +2,7 @@
 CrackSeg-GWD: Automatic lightweight networks for Multi-Material Bridge Crack Segmentation
 
 Overview
+
 CrackSeg-GWD is a lightweight segmentation model designed for detecting cracks on concrete, steel, and asphalt surfaces, where challenges such as irregular crack shapes, low contrast, noise, and complex backgrounds often reduce accuracy. Existing deep-learning approaches either lack strong multi-scale feature representation or are too heavy for deployment on edge devices, and no single compact model performs reliably across different material types.
 CrackSeg-GWD addresses these issues using a streamlined encoder–decoder architecture that incorporates Group Normalization, Weight-Standardized Convolutions, DropBlock regularization, and a Symmetric Unified Focal Loss to improve stability, reduce overfitting, and handle class imbalance. With just 0.414M parameters and 0.849 GFLOPs, it offers high efficiency while maintaining strong performance.
 Tested on five public datasets—SteelCrack, YCD, Crack500, DeepCrack, and Ozgenel—the model achieves consistent improvements over ten state-of-the-art baselines, making it well-suited for real-time structural inspection and construction automation.
