@@ -36,7 +36,12 @@ Our dataset: https://drive.google.com/file/d/1HHUAAsJBGeT0KJ_C4NkNEAw3XMQOWd0s/v
 
 
 # References:
+https://github.com/asifehmad/ResBCU-Net-for-Polyps-Segmentation.git
+
+
 https://github.com/ashish-s-bisht/SwinUnetArchitecturePytorch.git
+
 https://arxiv.org/abs/2105.05537
+
 https://github.com/huggingface/pytorch-image-models/blob/main/timm/models/swin_transformer.py
 
