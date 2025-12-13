@@ -7,9 +7,11 @@ CrackSeg-GWD is a lightweight segmentation model designed for detecting cracks o
 CrackSeg-GWD addresses these issues using a streamlined encoder–decoder architecture that incorporates Group Normalization, Weight-Standardized Convolutions, DropBlock regularization, and a Symmetric Unified Focal Loss to improve stability, reduce overfitting, and handle class imbalance. With just 0.414M parameters and 0.849 GFLOPs, it offers high efficiency while maintaining strong performance.
 Tested on five public datasets—SteelCrack, YCD, Crack500, DeepCrack, and Ozgenel—the model achieves consistent improvements over ten state-of-the-art baselines, making it well-suited for real-time structural inspection and construction automation.
 
+# 📄 Paper 
+The code and pre-trained models will be released once the corresponding paper is officially accepted.
 
 
-Datasets used on this study:
+# Datasets used on this study:
 1. The SteelCrack dataset is a widely used benchmark for steel crack detection and segmentation. The dataset is divided into 3,300 training images, 525 validation images, and 530 test images, offering a well-balanced split for deep learning–based segmentation studies. "Z. He, W. Chen, J. Zhang, Y.H. Wang, Crack segmentation on steel structures using boundary guidance model, Autom Constr 162 (2024). https://doi.org/10.1016/j.autcon.2024.105354."
 
 SteelCrack dataset :https://github.com/hzlbbfrog/Civil-dataset. 
