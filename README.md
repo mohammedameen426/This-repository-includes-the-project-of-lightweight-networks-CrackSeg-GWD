@@ -33,3 +33,10 @@ Crack500 dataset: https://github.com/fyangneil/pavement-crack-detection
 6. Crack Dataset: This dataset contains 128 high-resolution crack images (3024 × 3024) collected from sections of Qingyuan Road, split into 102 for training and 26 for testing. The images include real-world challenges such as strong shadows, uneven lighting, surface noise, and complex textures.These samples are used to test and evaluate the robustness of our model.
 
 Our dataset: https://drive.google.com/file/d/1HHUAAsJBGeT0KJ_C4NkNEAw3XMQOWd0s/view?usp=drive_link
+
+
+# References:
+https://github.com/ashish-s-bisht/SwinUnetArchitecturePytorch.git
+https://arxiv.org/abs/2105.05537
+https://github.com/huggingface/pytorch-image-models/blob/main/timm/models/swin_transformer.py
+
